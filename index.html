@@ -351,88 +351,13 @@
   }
   .quote-block strong { font-style: normal; color: var(--text); font-size: 15px; }
 
-  /* Hero screenshot placeholder */
-  .screenshot-placeholder {
-    background: linear-gradient(135deg, var(--surface2) 0%, #1a1f30 100%);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 32px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .screenshot-placeholder .hero-headline {
-    font-size: 22px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .screenshot-placeholder .hero-sub {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .screenshot-placeholder .hero-cta {
-    display: inline-flex;
-    gap: 8px;
-  }
-  .cta-btn {
-    padding: 9px 18px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-  }
-  .cta-primary { background: white; color: #111; }
-  .cta-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; }
-  .screenshot-note {
-    margin-top: 10px;
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-
-  /* Real screenshots gallery */
-  .screenshots-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 8px;
-  }
-  .screenshot-item {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-  }
-  .screenshot-item .screenshot-label {
-    padding: 8px 14px;
-    font-size: 11px;
-    color: var(--text-dim);
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-    font-family: monospace;
-  }
-  .screenshot-item img {
-    width: 100%;
-    display: block;
-    max-height: 800px;
-    object-fit: cover;
-    object-position: top;
-    cursor: zoom-in;
-    transition: max-height 0.3s ease;
-  }
-  .screenshot-item img:hover {
-    max-height: none;
-  }
-  .screenshot-item img.expanded {
-    max-height: none;
-  }
+  /* Interactive page embed */
+  .page-embed { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 20px 0; }
+  .embed-toolbar { background: var(--surface2); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .embed-url { color: var(--text-muted); font-family: monospace; }
+  .embed-open-btn { color: var(--accent-blue); text-decoration: none; font-size: 12px; }
+  .embed-open-btn:hover { text-decoration: underline; }
+  .page-iframe { width: 100%; height: 700px; border: none; display: block; background: #fff; }
 
   /* Feature tags row */
   .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -459,6 +384,43 @@
     color: var(--text);
     line-height: 1.65;
   }
+
+  /* Trust & Control box */
+  .trust-box {
+    background: rgba(45,206,137,0.04);
+    border: 1px solid rgba(45,206,137,0.2);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .trust-box h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trust-box ul {
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .trust-box li {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .trust-box .trust-gap {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(45,206,137,0.15);
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .trust-box .trust-gap strong { color: var(--text); }
 
   /* Insight callout */
   .insight {
@@ -599,11 +561,11 @@
 <div class="page-header">
   <div class="badge">🔬 Competitor Intelligence</div>
   <h1>Agent Builder — Market Deep Dive</h1>
-  <p class="subtitle">Custom agent creation capabilities across Asana, Notion, ClickUp, and Airtable. Built for monday.com's AI Work Platform hackathon.</p>
+  <p class="subtitle">AI agent capabilities across Asana, Notion, ClickUp, and Airtable. Built for monday.com's AI Work Platform hackathon.</p>
   <div class="meta">
     <div class="meta-item">📅 <span>June 2026</span></div>
-    <div class="meta-item">🎯 <span>Focus: Agent Builder UX, Positioning, Market Gaps</span></div>
-    <div class="meta-item">📊 <span>4 Competitors · 8 Pages Analyzed</span></div>
+    <div class="meta-item">🎯 <span>Focus: Agent Builder UX, Positioning, Trust & Control, Market Gaps</span></div>
+    <div class="meta-item">📊 <span>4 Competitors · Pages fetched fresh</span></div>
   </div>
 </div>
 
@@ -639,12 +601,12 @@
         <tbody>
           <tr>
             <td><div class="brand-chip"><div class="brand-dot" style="background:#f06a6a"></div>Asana</div></td>
-            <td>AI Teammates + AI Studio</td>
+            <td>AI Teammates</td>
             <td>"Your team just got bigger"</td>
-            <td><span class="chip blue">Team headcount extension</span></td>
-            <td><span class="chip green">Yes — no-code</span></td>
-            <td><span class="chip green">30 prebuilt</span></td>
-            <td>Enterprise Ops, PMO, Marketing</td>
+            <td><span class="chip blue">Adopt pre-built agents as teammates</span></td>
+            <td><span class="chip green">Yes — no-code, plain language</span></td>
+            <td><span class="chip green">30 prebuilt, named by role</span></td>
+            <td>Enterprise Ops, PMO, Marketing, IT</td>
             <td><span class="chip green">Most mature</span></td>
           </tr>
           <tr>
@@ -661,21 +623,21 @@
             <td><div class="brand-chip"><div class="brand-dot" style="background:#7b68f0"></div>ClickUp</div></td>
             <td>Super Agents</td>
             <td>"Create No-Code Super Agents That Do Real Work"</td>
-            <td><span class="chip purple">AI-powered teammates with full Workspace context</span></td>
-            <td><span class="chip green">Yes — conversational</span></td>
-            <td><span class="chip orange">Category templates</span></td>
-            <td>SMB, teams replacing legacy automation</td>
+            <td><span class="chip purple">Replace brittle automation with context-aware AI teammates</span></td>
+            <td><span class="chip green">Yes — conversational (ClickUp Brain)</span></td>
+            <td><span class="chip orange">No named catalog</span></td>
+            <td>SMB, automation-fatigued teams</td>
             <td><span class="chip blue">Growing fast</span></td>
           </tr>
           <tr>
             <td><div class="brand-chip"><div class="brand-dot" style="background:#2d7be5"></div>Airtable</div></td>
             <td>AI Agents (no brand name)</td>
-            <td>"Don't just ask AI. Deploy it."</td>
-            <td><span class="chip orange">Data-centric execution layer</span></td>
-            <td><span class="chip green">Yes — instant spin-up</span></td>
+            <td>"The instant way to put agents to work"</td>
+            <td><span class="chip orange">Data-centric execution inside structured tables</span></td>
+            <td><span class="chip green">Yes — "in seconds"</span></td>
             <td><span class="chip blue">AI Plays (use-case templates)</span></td>
-            <td>Ops teams, data-heavy workflows</td>
-            <td><span class="chip orange">Functional, less polished UX</span></td>
+            <td>Marketing Ops, Creative Ops, data-heavy teams</td>
+            <td><span class="chip orange">Functional, less UX polish</span></td>
           </tr>
         </tbody>
       </table>
@@ -691,12 +653,11 @@
         <div class="brand-logo" style="background: rgba(240,106,106,0.15); color: #f06a6a;">A</div>
         <div class="card-brand-info">
           <h2>Asana</h2>
-          <div class="tagline">AI Teammates + AI Studio · "Agentic Work Management"</div>
+          <div class="tagline">AI Teammates · "Your team just got bigger"</div>
         </div>
       </div>
       <div class="card-links">
         <a class="card-link" href="https://asana.com/product/ai/ai-teammates" target="_blank">↗ AI Teammates</a>
-        <a class="card-link" href="https://asana.com/product/ai/ai-studio" target="_blank">↗ AI Studio</a>
         <a class="card-link" href="https://asana.com/product/ai" target="_blank">↗ AI Overview</a>
       </div>
     </div>
@@ -704,88 +665,82 @@
     <div class="card-body">
 
       <!-- PART 1 -->
-      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE<span></span></div>
+      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE (asana.com/product/ai/ai-teammates)<span></span></div>
 
       <div class="subsection part1">
-        <div class="subsection-title">Above the Fold — AI Teammates Page</div>
+        <div class="subsection-title">Interactive Embed — AI Teammates Page</div>
 
-        <div class="screenshots-gallery">
-          <div class="screenshot-item">
-            <div class="screenshot-label">asana.com/product/ai/ai-teammates</div>
-            <img src="screenshots/asana-ai-teammates.png" alt="Asana AI Teammates page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+        <div class="page-embed">
+          <div class="embed-toolbar">
+            <span class="embed-url">asana.com/product/ai/ai-teammates</span>
+            <a href="https://asana.com/product/ai/ai-teammates" target="_blank" class="embed-open-btn">Open in new tab ↗</a>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-label">asana.com/product/ai/ai-studio</div>
-            <img src="screenshots/asana-ai-studio.png" alt="Asana AI Studio page" loading="lazy" onclick="this.classList.toggle('expanded')" />
-          </div>
-          <div class="screenshot-item">
-            <div class="screenshot-label">asana.com/product/ai</div>
-            <img src="screenshots/asana-ai.png" alt="Asana AI overview page" loading="lazy" onclick="this.classList.toggle('expanded')" />
-          </div>
-        </div>
-
-        <div class="visual-desc">
-          <div class="visual-item"><div class="label">Color palette</div><div class="value">Coral red (#f06a6a) brand accent, white/light backgrounds, clean SaaS-modern</div></div>
-          <div class="visual-item"><div class="label">Imagery style</div><div class="value">Task UI screenshots, team avatars alongside agent icons, animated workflow demos</div></div>
-          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Confident, warm, enterprise-approachable. Action verbs ("handles," "delivers," "works")</div></div>
-          <div class="visual-item"><div class="label">Layout</div><div class="value">Two-column hero → tabbed agent catalog by department → build flow → governance → pricing</div></div>
-        </div>
-      </div>
-
-      <div class="subsection part1">
-        <div class="subsection-title">Feature Inventory</div>
-        <div class="feature-tags">
-          <span class="chip blue">30 Pre-built Agents</span>
-          <span class="chip blue">Marketing / Ops / IT / Product categories</span>
-          <span class="chip blue">Custom Teammate Builder</span>
-          <span class="chip blue">Work Graph Context</span>
-          <span class="chip blue">No-code (plain language)</span>
-          <span class="chip blue">Permission-scoped access</span>
-          <span class="chip blue">Audit trail</span>
-          <span class="chip blue">Checkpoints & approvals</span>
-          <span class="chip blue">AI Studio (workflow automation)</span>
-          <span class="chip blue">OpenAI + Anthropic models</span>
-          <span class="chip blue">300+ integrations</span>
-          <span class="chip orange">Sales-only pricing (add-on)</span>
-        </div>
-
-        <div style="margin-top:16px">
-          <h4 style="font-size:13px;font-weight:700;color:var(--text-muted);margin-bottom:10px;">SOCIAL PROOF</h4>
-          <div class="proof-row">
-            <div class="proof-item"><strong>2–3h saved</strong> per analyst per task</div>
-            <div class="proof-item"><strong>10–15× coverage</strong> Asana security team</div>
-            <div class="proof-item"><strong>4h → 45min</strong> post-offsite reviews</div>
-            <div class="proof-item"><strong>18,000 assignments/yr</strong> automated at one media company</div>
+          <iframe
+            src="https://asana.com/product/ai/ai-teammates"
+            class="page-iframe"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            title="Asana AI Teammates"
+          ></iframe>
+          <div style="padding:10px 16px;font-size:11px;color:var(--text-dim);font-style:italic;background:var(--surface2);">
+            ⚠️ Note: Asana sets <code>X-Frame-Options: DENY</code> — iframe will be blocked by the browser. Use "Open in new tab" to view the live page.
           </div>
         </div>
 
         <div class="quote-block" style="margin-top:16px;">
-          <strong>"Setting up an AI Teammate is less like coding a rule and more like coaching a colleague."</strong> — Asana customer testimonial
+          <strong>Hero headline:</strong> "Your team just got bigger"
         </div>
-      </div>
+        <div class="quote-block">
+          <strong>Hero subheadline:</strong> "Pre-built AI agents that work alongside your team inside real workflows, with shared memory, governance, and context from the Work Graph, so they are ready to go on day one."
+        </div>
 
-      <div class="subsection part1">
-        <div class="subsection-title">AI Studio Page — Key Differentiator</div>
-        <div class="two-col">
-          <div class="info-box">
-            <h4>What it does</h4>
-            <ul>
-              <li>No-code workflow automation builder</li>
-              <li>Intake → Surface → Act phases</li>
-              <li>Triggers: task created, form submitted, project event</li>
-              <li>Actions: check, classify, route, alert, report, create, translate</li>
-              <li>Connects to Google Drive, web search, 3rd-party tools</li>
-            </ul>
+        <div style="margin-top:16px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">CTAs</h4>
+          <div class="feature-tags">
+            <span class="chip blue">Primary: "Contact sales"</span>
+            <span class="chip">Secondary: "Watch demo"</span>
+            <span class="chip">Bottom: "See pricing"</span>
           </div>
-          <div class="info-box">
-            <h4>Pricing tiers</h4>
-            <ul>
-              <li><strong>Basic:</strong> included on paid plans (rate-limited)</li>
-              <li><strong>Plus:</strong> $135/account/month · 100K credits</li>
-              <li><strong>Pro:</strong> Contact sales · 5M credits/quarter</li>
-              <li>Positioning: <em>Studio = busywork automation, Teammates = complex collaboration</em></li>
-            </ul>
+        </div>
+
+        <div style="margin-top:20px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;">Page Sections & Structure</h4>
+          <div class="two-col">
+            <div class="info-box">
+              <h4>Agent Catalog (by department)</h4>
+              <ul>
+                <li><strong>Marketing:</strong> Campaign Brief Writer, Brand Auditor, Launch Planner, Copywriter, Competitive Market Researcher, Content Localization Manager, Creative Spec Writer</li>
+                <li><strong>Operations & PMO:</strong> Pricing Strategist, Status Reporter, Business Case Builder, Decision Tracker, Workflow Optimizer, Data Quality Manager</li>
+                <li><strong>IT:</strong> IT Support Specialist, Trend Analyst, Compliance Specialist, Onboarding Assistant, Vendor Evaluator</li>
+                <li><strong>Product & Engineering:</strong> Spec Reviewer, Bug Investigator, Sprint Coach</li>
+                <li>Each department also shows a "Create your own" card</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <h4>Key Feature Claims on Page</h4>
+              <ul>
+                <li>"30 pre-built agents" — preapproved, preauthorized, ready to work</li>
+                <li>"The right teammate at the right moment" — agents show up where work is happening, already onboarded on workflows</li>
+                <li>"Smarter with every workflow" — past decisions and course corrections compound over time</li>
+                <li>"Identity, permissions, and an audit trail" — every action auditable and reversible</li>
+                <li>Build flow: Define the role → Give it guidance → Grant access</li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Social Proof (4 customer quotes on page)</h4>
+          <div class="quote-block">"Setting up an AI Teammate is less like coding a rule and more like coaching a colleague. With the AI generating drafts and auditing content instantly, our team shifted focus from data entry to strategic auditing, moving us from managing work to architecting outcomes."</div>
+          <div class="quote-block">"My team's biggest win was replacing an unreliable set of automations with a single 'Time Tracker' AI Teammate. It successfully went back through all our projects to fix incorrect calculations—which would have taken us days to do manually."</div>
+          <div class="quote-block">"I was so impressed. I gave the AI Teammate an Excel, but it didn't just analyze the file—it proactively used information from our entire Asana project board without me even prompting it to. It provided new perspectives I hadn't considered and saved me 2-3 hours of work."</div>
+        </div>
+
+        <div class="visual-desc" style="margin-top:16px;">
+          <div class="visual-item"><div class="label">Color palette</div><div class="value">Coral red (#f06a6a) brand accent, white/light backgrounds, clean enterprise-SaaS</div></div>
+          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Warm, enterprise-approachable. Action verbs: "handles," "delivers," "works." "Teammate" not "agent."</div></div>
+          <div class="visual-item"><div class="label">Layout pattern</div><div class="value">Hero → tabbed agent catalog by department → feature claims → build flow → trust/security → social proof → resources/FAQ</div></div>
+          <div class="visual-item"><div class="label">What's NOT on page</div><div class="value">No "AI Studio" references, no automation builder, no trigger logic. Pure "adopt teammates" positioning on this URL.</div></div>
         </div>
       </div>
 
@@ -796,33 +751,42 @@
         <div class="subsection-title">Strategic Analysis</div>
 
         <div class="analysis-item">
-          <h4>💡 Real Value Proposition (beyond the marketing)</h4>
-          <p>Asana isn't selling "AI" — they're selling <strong>AI as a justification for the work management platform you already use</strong>. The "Work Graph" is their moat: years of task history, user hierarchies, project context. Agents baked into this graph are meaningfully smarter than generic chatbots. The actual product promise is: <em>you don't have to prompt-engineer anything because the context is already there.</em></p>
+          <h4>💡 What is the actual product being positioned here?</h4>
+          <p>Asana AI Teammates are <strong>pre-built, role-specific agents you adopt — not a builder you use to create agents from scratch</strong>. The page leads with 30 named agents across departments. Custom creation exists ("Create your own" card) but is secondary. This is an <em>adoption</em> play, not a <em>builder</em> play. The Work Graph (Asana's data model of tasks, projects, teams, history) is explicitly positioned as what makes these agents "ready to go on day one" — it's the moat.</p>
         </div>
 
         <div class="analysis-item">
-          <h4>🎯 Who they're actually targeting</h4>
-          <p>Not the individual contributor. They're targeting <strong>IT admins and Ops leads who manage platform access</strong> — the "yes" gatekeeper for AI adoption. The governance language ("audit trail," "never elevate access," "your IT and Legal teams can say yes") is a direct pitch to the procurement blocker, not the user. The end-user message is secondary.</p>
+          <h4>🎯 Market positioning: Agents as teammates, not tools</h4>
+          <p>Asana is deliberately avoiding the word "agent" as a standalone term. They always say "AI Teammate." This is a calculated positioning choice: <em>teammates</em> carry accountability and human framing (you manage them, they report to you, they can be coached), while <em>agents</em> carry uncertainty (autonomous, potentially unpredictable). The "coaching a colleague" customer quote directly reinforces this. The positioning is "AI that works like a person on your team," not "AI that automates tasks."</p>
         </div>
 
         <div class="analysis-item">
-          <h4>📈 Market pressure driving this</h4>
-          <p>Asana has been losing SMB to ClickUp and Notion for years. Their only defensible ground is enterprise: complex permissions, compliance, cross-department workflows. The "Agentic Work Management" rebranding is a bet that AI resets the competitive dynamic — <strong>if agents require context, and context = data = years in the platform, incumbents win.</strong> Asana is forcing the "AI only works if your work management is mature" narrative.</p>
+          <h4>🚫 What are they NOT saying?</h4>
+          <p>On this page: <strong>no "build your own" in the hero</strong>, no customization depth shown, no trigger-based automation logic, no pricing for AI Teammates (only "Contact sales" or "See pricing" links). The broader AI suite (AI Studio for workflow automation, Asana Dash for daily prioritization, MCP/AI Connectors) is mentioned only at the bottom as a supporting resource — not featured. The message is: <em>start by adopting existing teammates, don't worry about building.</em></p>
         </div>
 
         <div class="analysis-item">
-          <h4>🚫 What they're deliberately avoiding saying</h4>
-          <p>They never say "agent" in isolation — always "AI Teammate." Why? <em>Agents</em> carry baggage (autonomous, unpredictable, possibly wrong). <em>Teammates</em> carry accountability (you manage them, they report to you). They're also not talking about cost per agent run, which means pricing is a known friction point. The "contact sales" CTA on AI Teammates is not a mistake.</p>
+          <h4>📈 Strategic choice: Why adoption over builder?</h4>
+          <p>Pre-built named agents reduce time-to-value and lower the "AI maturity" bar for enterprise buyers. Asana's likely insight: most enterprise teams won't build custom agents — they'll adopt ones that already work. By leading with 30 named specialists, Asana bypasses the "where do I even start?" problem that plagues blank-canvas builders. This also makes the sales story simpler: <em>"We have a Campaign Brief Writer. Do you have a marketing team? Yes? Great, it's ready."</em></p>
+        </div>
+
+        <div class="trust-box">
+          <h4>🔒 Trust & Control Signals (from page)</h4>
+          <ul>
+            <li><strong>"Identity, permissions, and an audit trail"</strong> — dedicated section, not a footnote. "Every action is auditable and reversible."</li>
+            <li><strong>"Your IT and Legal teams can say yes"</strong> — explicit enterprise procurement targeting.</li>
+            <li>AI Teammates follow <strong>same enterprise-grade access controls</strong> already in Asana; they <strong>never elevate access</strong>.</li>
+            <li>Admins control who can <strong>create, modify, and collaborate</strong> with AI Teammates.</li>
+            <li><strong>"Security without compromise"</strong> — AI Teammates follow boundaries set by the team for data access and sharing.</li>
+            <li>From AI overview page: <strong>AI partners do not train on customer data</strong>; partners required to <strong>delete data after each query</strong>.</li>
+            <li>Powered by <strong>OpenAI and Anthropic</strong> — named explicitly.</li>
+          </ul>
+          <div class="trust-gap"><strong>What's missing:</strong> No real-time governance dashboard, no agent usage analytics visible on this page, no explicit mention of how errors/mistakes are surfaced or corrected. Servers only in US — no data residency options outside US (mentioned in FAQ).</div>
         </div>
 
         <div class="analysis-item">
-          <h4>🏴 Market territory they're trying to own</h4>
-          <p>"AI that works within teams, not alongside individuals." The Studio/Teammates pairing is deliberate — they're trying to occupy both the automation layer (Studio) and the agentic layer (Teammates) simultaneously, making it hard for a single-feature competitor to displace them. They want to be the <em>OS</em> that other AI sits on top of.</p>
-        </div>
-
-        <div class="insight">
-          <div class="label">⚠️ Key Blind Spot</div>
-          Asana's Work Graph is powerful but <strong>only captures Asana data</strong>. Teams that work across many tools (Slack, Jira, Salesforce) get significantly less value. The "pre-built, pre-approved" agents are also a UX crutch — they're saying "don't worry about building" but that's exactly what power users want to do.
+          <h4>🏴 Gaps this leaves for monday.com</h4>
+          <p>Asana's Work Graph context is Asana-only. Teams working across Slack, Jira, Salesforce, and monday get less value. The "contact sales" gate on AI Teammates pricing is friction. No agent performance metrics or ROI visibility. Pre-built agents cover specific roles well but don't address cross-functional workflows that span multiple departments simultaneously. The builder ("Create your own") is real but subordinated — monday.com could own the builder-first story more aggressively.</p>
         </div>
       </div>
     </div>
@@ -851,16 +815,27 @@
       <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE<span></span></div>
 
       <div class="subsection part1">
-        <div class="subsection-title">Above the Fold — Agents Page</div>
-        <div class="screenshots-gallery">
-          <div class="screenshot-item">
-            <div class="screenshot-label">notion.com/product/agents</div>
-            <img src="screenshots/notion-agents.png" alt="Notion Agents page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+        <div class="subsection-title">Interactive Embed — Agents Page</div>
+
+        <div class="page-embed">
+          <div class="embed-toolbar">
+            <span class="embed-url">notion.com/product/agents</span>
+            <a href="https://www.notion.com/product/agents" target="_blank" class="embed-open-btn">Open in new tab ↗</a>
+          </div>
+          <iframe
+            src="https://www.notion.com/product/agents"
+            class="page-iframe"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            title="Notion Agents"
+          ></iframe>
+          <div style="padding:10px 16px;font-size:11px;color:var(--text-dim);font-style:italic;background:var(--surface2);">
+            ⚠️ Note: Notion's CSP sets <code>frame-ancestors 'self' https://app.notion.com</code> — iframe will be blocked. Use "Open in new tab" to view the live page.
           </div>
         </div>
 
         <div class="visual-desc">
-          <div class="visual-item"><div class="label">Color palette</div><div class="value">Clean white/off-white backgrounds, Notion's signature neutral warmth, purple-violet AI accents</div></div>
+          <div class="visual-item"><div class="label">Color palette</div><div class="value">Clean white/off-white backgrounds, Notion's neutral warmth, purple-violet AI accents</div></div>
           <div class="visual-item"><div class="label">Imagery style</div><div class="value">Minimal UI mockups, agent chat bubbles, abstract workspace illustrations</div></div>
           <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Friendly, personal, almost casual. "Your vibe." "24/7." Human-centric language.</div></div>
           <div class="visual-item"><div class="label">Layout</div><div class="value">Three use-case types → "Create your own" CTA → team benefit → permissions → FAQ</div></div>
@@ -907,7 +882,7 @@
       </div>
 
       <div class="subsection part1">
-        <div class="subsection-title">Product Intel from Help Doc (Golden Insights)</div>
+        <div class="subsection-title">Product Intel from Help Doc (Key Insights)</div>
         <div class="three-col">
           <div class="info-box">
             <h4>Database operations</h4>
@@ -953,9 +928,16 @@
           <p>They avoid the word "automation" almost entirely. "Automation" implies rigid rules, developer work, IT involvement. Notion's audience is non-technical and values the organic workspace. They're also avoiding capability comparisons — no benchmarks, no "x times faster" stats except in the help doc. The "24/7" framing is about continuous availability, not performance claims.</p>
         </div>
 
-        <div class="analysis-item">
-          <h4>🏴 Market territory they're trying to own</h4>
-          <p><strong>"The AI that knows everything you know."</strong> Personalization + knowledge retention is the territory. The agent that remembers "Sarah is your manager" and "you focus on product launches" is qualitatively different from any task-management agent. Notion is trying to become the <em>ambient intelligence layer</em> over your work — not just a tool that executes tasks.</p>
+        <div class="trust-box">
+          <h4>🔒 Trust & Control Signals (from page)</h4>
+          <ul>
+            <li>Personal Agent <strong>inherits user's existing permissions</strong> — no access elevation.</li>
+            <li>Custom Agents have <strong>configurable page-level access control</strong> — builder decides what workspace content agents can see.</li>
+            <li><strong>Plan mode</strong>: agent shows proposed changes before executing — human in the loop by default for destructive actions.</li>
+            <li>Pricing is transparent: <strong>$10 / 1,000 credits</strong> — no opaque "contact sales" gate.</li>
+            <li>Business + Enterprise plan gating for team-wide agents — implicit governance by plan tier.</li>
+          </ul>
+          <div class="trust-gap"><strong>What's missing:</strong> No audit trail or action log mentioned on the page. No enterprise-grade governance dashboard. No admin controls described for org-level oversight. No mention of AI partner names or data retention policies on the agents page (this info may exist elsewhere). The credit model means costs can scale unpredictably for heavy usage teams.</div>
         </div>
 
         <div class="insight">
@@ -980,78 +962,95 @@
       </div>
       <div class="card-links">
         <a class="card-link" href="https://clickup.com/solutions/ai-agent-builder" target="_blank">↗ Agent Builder</a>
-        <a class="card-link" href="https://clickup.com/" target="_blank">↗ Homepage</a>
+        <a class="card-link" href="https://help.clickup.com/hc/en-us/articles/37033397273111-Create-a-Super-Agent" target="_blank">↗ Super Agent Help</a>
       </div>
     </div>
 
     <div class="card-body">
 
-      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE<span></span></div>
+      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE (clickup.com/solutions/ai-agent-builder)<span></span></div>
 
       <div class="subsection part1">
-        <div class="subsection-title">Above the Fold — Agent Builder Page</div>
-        <div class="screenshots-gallery">
-          <div class="screenshot-item">
-            <div class="screenshot-label">clickup.com/solutions/ai-agent-builder</div>
-            <img src="screenshots/clickup-ai-agent-builder.png" alt="ClickUp AI Agent Builder page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+        <div class="subsection-title">Interactive Embed — Agent Builder Page</div>
+
+        <div class="page-embed">
+          <div class="embed-toolbar">
+            <span class="embed-url">clickup.com/solutions/ai-agent-builder</span>
+            <a href="https://clickup.com/solutions/ai-agent-builder" target="_blank" class="embed-open-btn">Open in new tab ↗</a>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-label">clickup.com (homepage)</div>
-            <img src="screenshots/clickup-home.png" alt="ClickUp homepage" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          <iframe
+            src="https://clickup.com/solutions/ai-agent-builder"
+            class="page-iframe"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            title="ClickUp AI Agent Builder"
+          ></iframe>
+          <div style="padding:10px 16px;font-size:11px;color:var(--text-dim);font-style:italic;background:var(--surface2);">
+            ⚠️ Note: ClickUp sets <code>X-Frame-Options: DENY</code> — iframe will be blocked. Use "Open in new tab" to view the live page.
           </div>
         </div>
 
-        <div class="visual-desc">
-          <div class="visual-item"><div class="label">Color palette</div><div class="value">Electric purple/violet primary (#7b68f0), bold contrast, action-oriented</div></div>
-          <div class="visual-item"><div class="label">Imagery style</div><div class="value">ClickUp UI screenshots, chat/task UI, bright gradients, energetic product demos</div></div>
-          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Punchy, challenger brand. "Super" is a power modifier. Direct, anti-corporate.</div></div>
-          <div class="visual-item"><div class="label">Layout</div><div class="value">Hero → problem/solution framing → Super Agent definition → feature list → blog CTAs</div></div>
+        <div class="quote-block" style="margin-top:16px;">
+          <strong>Hero headline:</strong> "Create No-Code Super Agents That Do Real Work"
         </div>
-      </div>
-
-      <div class="subsection part1">
-        <div class="subsection-title">Feature Inventory & Product Story</div>
-        <div class="two-col">
-          <div class="info-box">
-            <h4>The Problem Frame (explicit on page)</h4>
-            <ul>
-              <li>AI suggestions require manual follow-through</li>
-              <li>Rules/triggers break with context changes</li>
-              <li>Context scattered across Tasks, Docs, Chat</li>
-              <li>Scripts/code slow adoption</li>
-              <li>Governance/permissions hard to manage</li>
-            </ul>
-          </div>
-          <div class="info-box">
-            <h4>Super Agent Capabilities</h4>
-            <ul>
-              <li>Built via conversational chat (ClickUp Brain)</li>
-              <li>Full Workspace context (Tasks + Docs + Chat)</li>
-              <li>Multi-step reasoning + memory</li>
-              <li>@mention, assign tasks, message directly</li>
-              <li>Continuous background operation</li>
-              <li>Permission controls + human approval gates</li>
-              <li>Full action logging</li>
-              <li>Infinite knowledge & memory</li>
-            </ul>
-          </div>
+        <div class="quote-block">
+          <strong>Hero subheadline:</strong> "Design, customize, and deploy AI agents that understand your Workspace, execute multi-step workflows, and adapt over time. ClickUp's AI Agent Builder lets you turn natural language into intelligent automation powered by Super Agents."
         </div>
 
-        <div style="margin-top: 12px;">
+        <div style="margin-top:16px">
           <div class="feature-tags">
-            <span class="chip purple">Natural language builder</span>
-            <span class="chip purple">Full Workspace context</span>
-            <span class="chip purple">@mention agents like teammates</span>
-            <span class="chip purple">Background execution</span>
-            <span class="chip purple">Human approval gates</span>
-            <span class="chip purple">Multi-step reasoning</span>
-            <span class="chip green">Free tier available</span>
+            <span class="chip green">CTA: "Free forever. No credit card."</span>
+            <span class="chip blue">25,000+ reviews</span>
+            <span class="chip blue">150,000+ companies using ClickUp Brain</span>
           </div>
         </div>
 
-        <div class="proof-row" style="margin-top:12px;">
-          <div class="proof-item"><strong>25,000+</strong> reviews (implied G2/Capterra)</div>
-          <div class="proof-item"><strong>150,000+</strong> companies using ClickUp Brain</div>
+        <div style="margin-top:20px">
+          <div class="two-col">
+            <div class="info-box">
+              <h4>Problem Frame (explicit on page)</h4>
+              <ul>
+                <li>AI suggestions still require manual follow-through</li>
+                <li>Rules and triggers can't adapt to changing work</li>
+                <li>Context is scattered across tasks, Docs, and Chat</li>
+                <li>Scripts and code slow adoption</li>
+                <li>Governance and permissions are hard to manage</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <h4>What Super Agents Do (from page)</h4>
+              <ul>
+                <li>Built via conversational experience with ClickUp Brain (natural language, no code)</li>
+                <li>Full Workspace context — Tasks, Docs, and Chat</li>
+                <li>Multi-step reasoning and memory ("infinite knowledge & memory")</li>
+                <li>@mention, assign tasks, message directly like a teammate</li>
+                <li>Work continuously in the background</li>
+                <li>Research, generate content, update tasks, create Docs, send notifications</li>
+                <li>Coordinate actions across multiple steps and locations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Super Agent Definition (from page)</h4>
+          <div class="quote-block">
+            <strong>"Super Agents are ClickUp's AI-powered teammates that adapt to your Workspace, using full context across tasks, Docs, and Chat to securely perform multi-step workflows around the clock."</strong>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Builder Flow (from page)</h4>
+          <div class="quote-block">
+            <strong>"Build and configure Super Agents through a conversational experience with ClickUp Brain. Describe what you want the agent to do, refine its behavior, and deploy it without writing code."</strong>
+          </div>
+        </div>
+
+        <div class="visual-desc" style="margin-top:16px;">
+          <div class="visual-item"><div class="label">Color palette</div><div class="value">Electric purple/violet (#7b68f0), bold contrast, action-oriented challenger brand</div></div>
+          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Punchy, anti-corporate. "Super" as a power modifier. Direct problem/solution framing.</div></div>
+          <div class="visual-item"><div class="label">Page structure</div><div class="value">Hero → Why traditional automation fails → How ClickUp solves it → Super Agents definition → Builder flow → Social proof → Blog resources</div></div>
+          <div class="visual-item"><div class="label">Note on help docs</div><div class="value">Super Agent help article (37033397273111) returned 403 — gated behind login. Product details beyond landing page are not publicly verifiable.</div></div>
         </div>
       </div>
 
@@ -1061,33 +1060,39 @@
         <div class="subsection-title">Strategic Analysis</div>
 
         <div class="analysis-item">
-          <h4>💡 Real Value Proposition</h4>
-          <p>ClickUp's pitch is that <strong>existing automation is fundamentally broken</strong>, and Super Agents replace an entire category (Zapier-style rules) with AI reasoning. The problem/solution frame on the page is actually their most revealing signal — they're explicitly telling users that what they've been using before doesn't work. The real value is: <em>one AI teammate that adapts instead of five brittle automations you have to maintain.</em></p>
+          <h4>💡 What is "Super Agent" actually?</h4>
+          <p>Based on the landing page: Super Agents are <strong>instruction-based AI teammates built conversationally through ClickUp Brain</strong>. You describe what you want in natural language, refine behavior, and deploy. They have Workspace-wide context (Tasks + Docs + Chat), can reason across multiple steps, and operate continuously in the background. What they <em>can't</em> do (based on page evidence alone): no named integration catalog, no explicit trigger library, no cross-tool connections outside ClickUp. The help article is login-gated (403), so deeper product specifics can't be verified from public sources.</p>
         </div>
 
         <div class="analysis-item">
-          <h4>🎯 Who they're actually targeting</h4>
-          <p>The <strong>automation-fatigued SMB</strong> — teams that built 20 Zaps and half of them broke last quarter. Also targeting the ClickUp user who already lives in the product across Tasks, Docs, and Chat, and wants the AI to have that same cross-feature context. The "free forever, no credit card" CTA signals they're prioritizing volume/adoption over revenue on the AI tier — classic land-and-expand.</p>
+          <h4>🔧 How deep is the builder?</h4>
+          <p>The builder is <strong>instructions-based, conversational</strong> — you talk to ClickUp Brain to define the agent. This is the simplest possible builder UX, lowering the entry bar significantly. There's no indication of visual trigger configuration, complex logic branches, or webhook/API integration depth. The "multi-step reasoning" claim is about the agent's runtime behavior (AI reasoning chains), not a visual workflow builder. <em>Inference: this is a prompt-configured agent, not a low-code automation builder.</em></p>
         </div>
 
         <div class="analysis-item">
-          <h4>📈 Market pressure driving this</h4>
-          <p>ClickUp has been the aggressive SMB/startup play, but AI is a chance to upgrade perception. The "Super" naming isn't accidental — they're trying to make agents feel aspirational, not just functional. They're also responding to Asana's and Notion's launches with a speed/accessibility counter-punch: <em>you don't need sales to get started, it's free, it works now.</em></p>
+          <h4>🎯 Go-to-market: builders or end-users?</h4>
+          <p>Clearly targeting <strong>end-users, not developers</strong>. The "free forever, no credit card" CTA signals maximum adoption friction removal — a volume land-and-expand play. The problem frame (broken automations, scattered context) resonates with ops leads and project managers, not IT admins. The "replace traditional automation" pitch targets <strong>Zapier/Make users and ClickUp power users who've hit the limits of rules-based automation</strong> — a very specific and large addressable segment.</p>
+        </div>
+
+        <div class="trust-box">
+          <h4>🔒 Trust & Control Signals (from page)</h4>
+          <ul>
+            <li>"You control which tools and data sources agents can access and who can trigger or manage them."</li>
+            <li><strong>"Every action is logged"</strong> — mentioned explicitly.</li>
+            <li><strong>"Agents can require human approval for critical decisions"</strong> — approval gates available.</li>
+            <li>Permission controls on which tools/data agents can access.</li>
+          </ul>
+          <div class="trust-gap"><strong>What's missing:</strong> No audit trail beyond "actions are logged" — no mention of who reviews logs, export capability, or governance dashboard. No AI model partner named (unusual vs. Asana/Airtable). No data training/retention policy stated. No admin-level org controls described. Help docs are login-gated so enterprise governance depth is unverifiable from public sources. Trust story is <em>present but thinner</em> than Asana's.</div>
         </div>
 
         <div class="analysis-item">
-          <h4>🚫 What they're deliberately avoiding</h4>
-          <p>No mention of specific AI model partners (unusual — everyone else names OpenAI/Anthropic). No showcase of individual agent templates by name (unlike Asana's 30 named agents). The help article was gated (403), suggesting the product experience is less polished to the outside world. They also don't talk about cross-tool integrations — the implicit assumption is <strong>everything lives in ClickUp</strong>.</p>
+          <h4>🚫 What they're NOT saying</h4>
+          <p>No named agent templates or catalog (unlike Asana's 30 named agents). No AI model partners named. No cross-tool integrations beyond ClickUp's own Workspace. No enterprise-specific governance or compliance claims. The "all context lives in ClickUp" assumption is implicit — there's no story for teams that work across multiple tools outside ClickUp.</p>
         </div>
 
         <div class="analysis-item">
-          <h4>🏴 Market territory they're trying to own</h4>
-          <p><strong>"The all-in-one that actually replaced everything else."</strong> If Tasks + Docs + Chat + Agents all exist in one Workspace, the context-sharing story becomes very compelling. ClickUp's bet is that the gravitational pull of consolidation wins — teams that are already 80% in ClickUp will let the agent handle the 20% they were automating elsewhere.</p>
-        </div>
-
-        <div class="insight">
-          <div class="label">⚠️ Key Blind Spot</div>
-          ClickUp's all-in-one positioning is also a trust problem. Enterprises are skeptical of "one tool to rule them all." The @mention UX is clever for SMBs but may feel too informal for enterprise ops. The lack of named/branded agent templates means there's no emotional anchor for new users — unlike Asana's "Campaign Brief Writer" or Notion's "Status Update Agent," Super Agents feel abstract until you build one.
+          <h4>🏴 Gaps this leaves for monday.com</h4>
+          <p>No named agent catalog = no emotional anchor for new users ("where do I start?"). Help docs are gated, suggesting product maturity may lag marketing claims. The "everything must be in ClickUp" dependency is limiting for enterprises with established tool stacks. No named AI model partners creates trust uncertainty for enterprise procurement. monday.com could own: a public agent catalog, named integrations, and a transparent governance story.</p>
         </div>
       </div>
     </div>
@@ -1102,7 +1107,7 @@
         <div class="brand-logo" style="background: rgba(45,123,229,0.15); color: #4da6ff;">AT</div>
         <div class="card-brand-info">
           <h2>Airtable</h2>
-          <div class="tagline">AI Agents · "Don't just ask AI. Deploy it."</div>
+          <div class="tagline">AI Agents · "The instant way to put agents to work"</div>
         </div>
       </div>
       <div class="card-links">
@@ -1113,68 +1118,85 @@
 
     <div class="card-body">
 
-      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE<span></span></div>
+      <div class="part-divider p1"><span></span>PART 1 — WEB EXPERIENCE (airtable.com/platform/ai-agents)<span></span></div>
 
       <div class="subsection part1">
-        <div class="subsection-title">Above the Fold — AI Agents Page</div>
-        <div class="screenshots-gallery">
-          <div class="screenshot-item">
-            <div class="screenshot-label">airtable.com/platform/ai-agents</div>
-            <img src="screenshots/airtable-ai-agents.png" alt="Airtable AI Agents page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+        <div class="subsection-title">Interactive Embed — AI Agents Page</div>
+
+        <div class="page-embed">
+          <div class="embed-toolbar">
+            <span class="embed-url">airtable.com/platform/ai-agents</span>
+            <a href="https://www.airtable.com/platform/ai-agents" target="_blank" class="embed-open-btn">Open in new tab ↗</a>
           </div>
-          <div class="screenshot-item">
-            <div class="screenshot-label">airtable.com (homepage)</div>
-            <img src="screenshots/airtable-home.png" alt="Airtable homepage" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          <iframe
+            src="https://www.airtable.com/platform/ai-agents"
+            class="page-iframe"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            title="Airtable AI Agents"
+          ></iframe>
+          <div style="padding:10px 16px;font-size:11px;color:var(--text-dim);font-style:italic;background:var(--surface2);">
+            Note: Airtable does not set <code>X-Frame-Options</code> or <code>frame-ancestors</code> restrictions — this iframe <em>may</em> load, though login walls or JavaScript redirects could still block it. Use "Open in new tab" if it doesn't render.
           </div>
         </div>
 
-        <div class="visual-desc">
-          <div class="visual-item"><div class="label">Color palette</div><div class="value">Blue primary (#2d7be5), clean white backgrounds, structured data grid aesthetics</div></div>
-          <div class="visual-item"><div class="label">Imagery style</div><div class="value">Data tables, before/after document flows, enterprise-professional</div></div>
-          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">Businesslike, outcomes-focused. "Magical" is the one indulgence — otherwise very factual.</div></div>
-          <div class="visual-item"><div class="label">Layout</div><div class="value">Hero → 3 core use-cases (docs, web research, image gen) → custom agent → "AI Plays" templates → enterprise controls</div></div>
+        <div class="quote-block" style="margin-top:16px;">
+          <strong>Hero headline:</strong> "The instant way to put agents to work"
         </div>
-      </div>
+        <div class="quote-block">
+          <strong>Hero subheadline:</strong> "Turn manual to magical with agents who understand your business, make informed decisions, and get work done at scale in a fraction of the time."
+        </div>
 
-      <div class="subsection part1">
-        <div class="subsection-title">Feature Inventory</div>
-        <div class="three-col">
-          <div class="info-box">
-            <h4>Core Agent Capabilities</h4>
-            <ul>
-              <li>Read 10,000 documents → structured data</li>
-              <li>Contract/invoice/report extraction</li>
-              <li>Web research: leads, competitors, news</li>
-              <li>Image + concept generation</li>
-              <li>Content localization at scale</li>
-              <li>Custom agent spin-up "in seconds"</li>
-            </ul>
-          </div>
-          <div class="info-box">
-            <h4>Enterprise Controls</h4>
-            <ul>
-              <li>Choice of AI models (OpenAI, Anthropic, Meta, others)</li>
-              <li>Amazon Bedrock option (data never leaves AWS)</li>
-              <li>Admin-managed AI enable/disable</li>
-              <li>Data never used for training</li>
-              <li>Workspace-level governance</li>
-            </ul>
-          </div>
-          <div class="info-box">
-            <h4>AI Plays (Templates)</h4>
-            <ul>
-              <li>Campaign concept ideation</li>
-              <li>Brand & compliance review</li>
-              <li>Image/copy localization</li>
-              <li>Contract operations</li>
-              <li>Prebuilt with use-case framing</li>
-            </ul>
+        <div style="margin-top:20px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;">Three Featured Capability Sections (exact headlines from page)</h4>
+          <div class="three-col">
+            <div class="info-box">
+              <h4>"Read 10,000 documents and extract critical insights in seconds"</h4>
+              <p>Scan contracts, invoices, and reports for red flags and hidden gems. Turn documents into structured and actionable data in Airtable.</p>
+            </div>
+            <div class="info-box">
+              <h4>"Research the web for always-on intel"</h4>
+              <p>Enrich leads, analyze competitors, and summarize news. Agents bring real-time web data into structured workflows — working constantly to find answers and drive action.</p>
+            </div>
+            <div class="info-box">
+              <h4>"Brainstorm in high-fidelity with concept and image generation"</h4>
+              <p>Generate countless concepts in content and images. Extend thinking with sophisticated localization for every region in your portfolio. "What used to take months now happens with a click."</p>
+            </div>
           </div>
         </div>
 
-        <div class="proof-row" style="margin-top:12px;">
-          <div class="proof-item"><strong>500,000+</strong> organizations</div>
-          <div class="proof-item">Focus: Marketing, Creative, Operations teams</div>
+        <div style="margin-top:16px">
+          <div class="quote-block">
+            <strong>Custom agent CTA:</strong> "Add any custom agent to your table in seconds — Looking for something else? Airtable will let you spin up custom agents to handle any task."
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h4 style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;">AI Plays (Template Gallery)</h4>
+          <div class="two-col">
+            <div class="info-box">
+              <h4>Marketing & Creative</h4>
+              <ul>
+                <li>Campaign concept ideation — "Quickly turn briefs into on-brand campaign ideas"</li>
+                <li>Brand and compliance checker — "Speed up creative reviews, keep campaigns compliant"</li>
+                <li>Localize image and copy variants at scale — "Instantly translate and adapt campaign copy and images"</li>
+              </ul>
+            </div>
+            <div class="info-box">
+              <h4>Operations</h4>
+              <ul>
+                <li>Contract operations — "Extract data from contracts and power operational workflows with live signals for marketing, support, and sales teams"</li>
+              </ul>
+              <p style="margin-top:8px;font-size:12px;color:var(--text-muted);">4 templates shown (carousel pattern, repeating same 4). AI Plays is the template entry point — not an extensive catalog.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-desc" style="margin-top:16px;">
+          <div class="visual-item"><div class="label">Color palette</div><div class="value">Blue primary (#2d7be5), clean white backgrounds, data-table grid aesthetics</div></div>
+          <div class="visual-item"><div class="label">Tone of voice</div><div class="value">"Turn manual to magical" is the only emotional line. Otherwise factual and outcomes-focused. "Deploy it" in the site-level hero implies developer/ops target.</div></div>
+          <div class="visual-item"><div class="label">Social proof</div><div class="value">"Teams at over 500,000 forward-thinking organizations use Airtable every day." No agent-specific customer quotes or case studies on this page.</div></div>
+          <div class="visual-item"><div class="label">What's NOT on page</div><div class="value">No agent brand name, no named AI models on this page (only in enterprise controls section), no agent memory/learning story, no team collaboration/communication features.</div></div>
         </div>
       </div>
 
@@ -1184,33 +1206,39 @@
         <div class="subsection-title">Strategic Analysis</div>
 
         <div class="analysis-item">
-          <h4>💡 Real Value Proposition</h4>
-          <p>Airtable is not a task management tool pretending to have AI — they're a <strong>structured data platform that can now act on that data</strong>. The implicit proposition: if you've been building operations in Airtable (CRMs, content pipelines, contract trackers), agents that operate directly on those tables are categorically more powerful than agents in a separate chat interface. They're selling <em>AI that works inside your data model</em>, not alongside it.</p>
+          <h4>💡 What kind of agents does Airtable offer?</h4>
+          <p>Based on the page: Airtable agents are <strong>data-processing agents embedded directly in Airtable tables</strong>. The three featured capabilities (document extraction, web research, image/concept generation) are all batch-oriented, structured-data tasks — not conversational collaboration or workflow automation in the traditional sense. The "add any custom agent to your table in seconds" copy implies agents are <em>table-level operations</em>, not org-wide AI teammates. This is closer to an <em>AI-enrichment layer on structured data</em> than a conversational agent builder.</p>
         </div>
 
         <div class="analysis-item">
-          <h4>🎯 Who they're actually targeting</h4>
-          <p>Specifically: <strong>Marketing Ops and Creative Operations teams</strong> at mid-to-large companies. The "10,000 documents" and "campaign concepts" framing is very targeted. Airtable has always indexed heavily toward non-technical operators who have outgrown spreadsheets. The Amazon Bedrock option signals they're also closing enterprise deals where legal/compliance requires data sovereignty — <em>they're pitching to the CISO as well as the CMO.</em></p>
+          <h4>🎯 Who are they targeting?</h4>
+          <p>Based on page evidence: <strong>Marketing Ops and Creative Operations teams</strong> — the AI Plays are dominated by marketing/creative use cases (campaign ideation, brand compliance, localization). Contract operations is the only non-marketing template. The "10,000 documents" and "read reports for red flags" framing also targets <strong>Operations teams managing large data volumes</strong> — legal/compliance ops, procurement ops. The Amazon Bedrock option signals enterprise deals where data sovereignty is a hard requirement (CISO, legal, procurement buyers).</p>
         </div>
 
         <div class="analysis-item">
-          <h4>📈 Market pressure driving this</h4>
-          <p>Airtable has faced stiff competition from Notion (knowledge layer) and monday.com (project management) on the relational-database-for-business use case. The AI pivot is an attempt to make their core product — structured tables — the killer advantage for AI agents. The "read 10,000 documents" number is a flex only possible because <strong>Airtable's data model naturally supports large structured datasets</strong>. They're converting their technical architecture into a marketing story.</p>
+          <h4>📈 Strategic angle: workflow automation + AI, or true agentic?</h4>
+          <p>Airtable's positioning is <strong>workflow automation fused with AI inside a structured data model</strong> — not "true agentic" in the sense of autonomous, multi-turn reasoning agents. The agents process data at scale (10,000 documents), enrich records (web research), and generate content — but there's no story about agents reasoning over time, participating in team decisions, or learning from feedback. <em>Inference: these are AI-powered automations at scale, positioned as "agents" to ride the trend.</em></p>
+        </div>
+
+        <div class="trust-box">
+          <h4>🔒 Trust & Control Signals (from page)</h4>
+          <ul>
+            <li><strong>"Your choice of AI models"</strong> — enterprise customers decide which models are enabled: OpenAI, Anthropic, Meta, others.</li>
+            <li><strong>"Admins manage AI usage"</strong> — admins enable AI at workspace level; "there aren't any surprises."</li>
+            <li><strong>"Your data stays secure"</strong> — model providers never retain data; data never used for model training.</li>
+            <li><strong>Amazon Bedrock option</strong> — "model providers never need to touch your data." This is the strongest data sovereignty story of all four competitors.</li>
+          </ul>
+          <div class="trust-gap"><strong>What's missing:</strong> No individual agent audit trail or action log. No per-agent permission controls (only workspace-level). No mention of governance for outputs (who reviews what agents generate/publish). No agent-level access scoping. Trust story is strong at the <em>data/model layer</em> but weak at the <em>agent behavior layer</em>.</div>
         </div>
 
         <div class="analysis-item">
-          <h4>🚫 What they're deliberately avoiding</h4>
-          <p>No mention of agent "memory" or learning over time. No team collaboration story (agents are largely standalone, not collaborative). They avoid the word "automation" too — "deploy" is a developer/ops term, suggesting they're okay with a more technical user. No conversation about governance of <em>individual agents</em> (just workspace-level controls). Interestingly, <strong>no named brand for their agents</strong> — no "AI Teammates," no "Super Agents." This is either strategic minimalism or a sign that agent UX is still evolving.</p>
+          <h4>🚫 What they're NOT saying</h4>
+          <p>No agent memory or learning over time. No team collaboration story (agents are standalone data processors, not teammates). No agent brand name — no "AI Teammates," no "Super Agents." No case studies or customer quotes specific to agents (only org-level social proof: 500k organizations). The "in seconds" custom agent claim implies speed but not depth — no detail on what configuration is possible.</p>
         </div>
 
         <div class="analysis-item">
-          <h4>🏴 Market territory they're trying to own</h4>
-          <p><strong>"AI for operations teams that run on structured data."</strong> The Amazon Bedrock differentiator is an enterprise-specific play that none of the other competitors have — it's a direct answer to "what if we can't let data leave our cloud?" The "AI Plays" template library is similar to Asana's approach but framed around business outcomes (campaign velocity, contract ops) rather than roles (Campaign Brief Writer).</p>
-        </div>
-
-        <div class="insight">
-          <div class="label">⚠️ Key Blind Spot</div>
-          Airtable agents feel <strong>transactional, not collaborative</strong>. They process documents and generate content, but there's no story about agents participating in ongoing workflows, learning team context, or improving over time. The "add any custom agent to your table in seconds" sounds fast but also sounds shallow. Compared to Notion's deeply personal agent or Asana's governance-forward teammate story, Airtable's agents feel more like smart batch jobs than true AI colleagues.
+          <h4>🏴 Gaps this leaves for monday.com</h4>
+          <p>Airtable agents feel <strong>transactional</strong>: they process documents and generate content, but there's no story about agents participating in ongoing team workflows, learning context, or collaborating with people. The Amazon Bedrock differentiator is strong for enterprise but unavailable to SMBs. The template catalog (AI Plays) covers only 4 use cases — very thin compared to Asana's 30 named agents. monday.com could own: cross-functional agent collaboration, a richer template ecosystem, and agents with actual memory and context across boards.</p>
         </div>
       </div>
     </div>
@@ -1221,42 +1249,42 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <section class="gaps-section" id="gaps">
     <h2 class="section-title" style="color:#fff;margin-bottom:8px;"><div class="icon" style="background:rgba(0,115,234,0.15);color:var(--monday-blue);">🎯</div> Gaps for monday.com to Own</h2>
-    <p style="color:var(--text-muted);font-size:13.5px;margin-bottom:28px;">Based on what all four competitors are NOT doing, or doing poorly. These are real spaces monday.com could claim.</p>
+    <p style="color:var(--text-muted);font-size:13.5px;margin-bottom:28px;">Based on verified observations from all four competitor pages. Each gap maps to something a competitor is visibly not doing or doing poorly.</p>
 
     <div class="gap-card">
       <h3>🧠 1. Agents with Cross-Board Intelligence (The "Work OS" Agent)</h3>
-      <div class="opportunity">Every competitor's agent is siloed to their platform. Asana agents know Asana data. Notion agents know Notion pages. <strong>monday.com's differentiator: an agent that natively spans Items, Boards, Automations, Dashboards, and CRM simultaneously.</strong> No other competitor has a Work OS data model this rich. An agent that can reason across a sales board + a product board + a resource allocation board = a genuinely novel capability.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> Competitors don't have monday's cross-functional data model. Asana's Work Graph is task-centric. Notion is document-centric. ClickUp's context is locked within one Workspace tool. monday's multi-board relational structure is architecturally unique.</div>
+      <div class="opportunity">All four competitors' agents are siloed to their platform's data model. Asana agents reason over Asana's Work Graph. Notion agents reason over Notion pages. ClickUp agents reason over ClickUp Workspace. Airtable agents process Airtable tables. <strong>None of them has a data model that spans sales pipeline + project management + HR + CRM simultaneously the way monday's multi-board structure does.</strong> An agent that natively reasons across a Sales CRM board, a Product roadmap board, and a Resource allocation board = a capability none of them can replicate today.</div>
+      <div class="why"><strong>Why it's unclaimed:</strong> This requires a cross-functional Work OS data model. Asana's Work Graph is task/project-centric. Notion is document-centric. ClickUp's context is locked within its own Workspace. Airtable operates per-table. monday's multi-board relational structure with Items, Subitems, and cross-board relationships is architecturally unique.</div>
     </div>
 
     <div class="gap-card">
-      <h3>👥 2. Agent Templates Tied to Business Roles, Not Job Titles</h3>
-      <div class="opportunity">Asana has role-based templates (Campaign Brief Writer, Status Reporter). But no one has templates tied to <strong>business outcomes</strong> — "Close deals faster," "Reduce time-to-hire," "Ship features on schedule." monday.com's positioning as a Work OS across Sales, HR, Product, and Marketing means it can build agent templates that speak to business outcomes, not just task automation. This feels more strategic and less like IT tooling.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> Notion and ClickUp are too generic; Asana is too task-focused; Airtable is too data-focused. None of them have monday's credibility across Sales CRM + HR + Marketing + Dev.</div>
+      <h3>📊 2. Agent Performance Dashboards (Management Layer)</h3>
+      <div class="opportunity">Asana has audit trails. ClickUp logs actions. Notion shows credit consumption. But <strong>none of the four competitors offers a real-time dashboard showing agent ROI: tasks completed, time saved, errors flagged, workflows accelerated.</strong> monday.com already has Dashboards as a core product — building an "AI Command Center" board that shows how all your agents are performing across the org would be a natural extension and a genuine enterprise differentiator.</div>
+      <div class="why"><strong>Why it's unclaimed:</strong> Competitors treat governance as a permissions/compliance problem. monday could reframe it as a productivity visibility problem — much more palatable to business leadership and aligning with monday's existing dashboards story.</div>
     </div>
 
     <div class="gap-card">
-      <h3>🔄 3. Agent-as-Column: AI Embedded in the Work, Not Above It</h3>
-      <div class="opportunity">All competitors put agents in a sidebar, a chat interface, or a separate section. <strong>monday.com could pioneer agents that live directly inside Board columns</strong> — an "AI Agent" column type that acts on row data automatically (summarize, classify, enrich, route, escalate). This is radical data-native AI that fits monday's visual UX pattern. Closer to Airtable's data model but with monday's richer workflow engine.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> Airtable does something similar with AI fields, but it's batch/static. monday's automation + column combo could make it dynamic and event-triggered. No one is doing "agent inside the cell."</div>
+      <h3>🔄 3. Agent-as-Column: AI Embedded in the Work Surface</h3>
+      <div class="opportunity">All competitors put agents in a sidebar, chat interface, or separate section. ClickUp uses @mention. Notion has a chat panel. Asana assigns agents to tasks. Airtable adds agents to tables. <strong>monday.com could pioneer agents that live directly inside Board columns</strong> — an "AI Agent" column type that acts on row data automatically (classify, enrich, route, escalate, summarize). This is data-native AI that fits monday's visual UX pattern exactly.</div>
+      <div class="why"><strong>Why it's unclaimed:</strong> Airtable does something similar with AI fields, but it's batch/static. monday's automation + column combo could make it dynamic and event-triggered. No competitor is doing "agent embedded in the work item cell."</div>
     </div>
 
     <div class="gap-card">
-      <h3>📊 4. Agent Performance Dashboards (The Management Layer)</h3>
-      <div class="opportunity">Notion has credit consumption visibility. Asana has audit trails. But <strong>no one offers a real-time dashboard showing agent ROI: tasks completed, time saved, errors corrected, workflows accelerated.</strong> monday.com already has Dashboards as a core product — building an "AI Command Center" board that shows how all your agents are performing across the org would be a natural extension and a genuine enterprise differentiator.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> All competitors treat governance as a permissions problem. monday could reframe it as a productivity visibility problem — which is much more palatable to business leadership.</div>
+      <h3>🛒 4. A Public Agent Marketplace / Template Gallery</h3>
+      <div class="opportunity">ClickUp has no named agent catalog. Airtable has 4 AI Plays templates. Notion has templates but no catalog. Asana has 30 named agents but they're behind a "contact sales" gate. <strong>monday.com could launch a public, searchable Agent Marketplace</strong> where partners, consultants, and power users publish and install pre-built agents — mirroring how monday's app marketplace works today. This creates network effects, reduces adoption friction, and positions monday as a platform.</div>
+      <div class="why"><strong>Why it's unclaimed:</strong> No competitor has applied the "app store" model to agents yet. Asana is closest but it's curated/closed. This is a first-mover opportunity for monday's 200k+ customer base and partner ecosystem.</div>
     </div>
 
     <div class="gap-card">
-      <h3>🛒 5. An Agent Marketplace / Template Gallery (Not Just Builder)</h3>
-      <div class="opportunity">ClickUp has no branded agent catalog. Notion offers a few template types. Asana has 30 named agents but they're locked behind sales. <strong>monday.com could launch a public, shareable Agent Marketplace</strong> where partners, consultants, and power users publish and install pre-built agents — similar to how monday's app marketplace works today. This creates network effects, reduces adoption friction, and positions monday as a platform, not a product.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> No competitor has applied the "app store" model to agents yet. Asana is close but it's not user-generated. This is a genuine first-mover opportunity for monday's 200k+ customer base.</div>
+      <h3>🤝 5. Human-in-the-Loop as Collaborative Design, Not Just a Safety Net</h3>
+      <div class="opportunity">Asana calls it "audit trail." ClickUp calls it "human approval for critical decisions." Notion has "plan mode." These are all framed as <em>safeguards</em>. <strong>monday.com could position human review as a first-class collaborative workflow mode</strong> — where agents draft, humans approve, and each approval creates a signal that improves future runs. This is "co-pilot mode" not "guardrails." It's more aligned with how enterprise teams in 2026 want to work: AI does the first 80%, humans provide the final 20% judgment.</div>
+      <div class="why"><strong>Why it's unclaimed:</strong> All competitors frame this as risk management. monday could reframe it as a new collaborative workflow category — <em>augmented decision-making</em> — which is a fundamentally more compelling story for knowledge workers and managers.</div>
     </div>
 
     <div class="gap-card">
-      <h3>🤝 6. Human-in-the-Loop as a Feature, Not a Fallback</h3>
-      <div class="opportunity">Every competitor treats human approval as a safety mechanism ("just in case the agent messes up"). <strong>monday.com could position human review as a first-class collaboration mode</strong> — where agents draft, humans approve, and the approval itself creates a learning signal that improves future agent runs. This is "co-piloting" not "guardrails." It's more aligned with how enterprise teams actually want to work with AI in 2026.</div>
-      <div class="why"><strong>Why it's unclaimed:</strong> Competitors frame this as risk management. monday could frame it as a new workflow model — <em>augmented decision-making</em> — which is a fundamentally more compelling story for knowledge workers.</div>
+      <h3>🔒 6. Enterprise Trust Leadership (Governance + Transparency)</h3>
+      <div class="opportunity">Asana has the strongest governance story of the four (audit trail, IT/Legal targeting, permissions). Airtable has the strongest data privacy story (Amazon Bedrock). ClickUp and Notion have lighter governance. <strong>monday.com could own the combination: robust agent audit trails + data residency choices + a visible governance dashboard + org-level admin controls — all in one.</strong> No competitor has all four simultaneously on their agent page.</div>
+      <div class="why"><strong>Why it's real:</strong> Asana's governance is strong but US-only servers. Airtable's data privacy is strong but no agent audit trail. ClickUp's governance is thin. Notion's is implicit. The gap for monday: be the first to show enterprise buyers a complete Trust & Control story for agents — not just data privacy, but agent behavior transparency too.</div>
     </div>
   </section>
 
@@ -1268,19 +1296,20 @@
         <div style="font-size:13px;font-weight:600;color:var(--accent-green);margin-bottom:8px;">✅ Steal these moves</div>
         <ul style="font-size:13.5px;color:var(--text);padding-left:16px;display:flex;flex-direction:column;gap:6px;line-height:1.6;">
           <li>Asana's governance + audit trail story (enterprise credibility)</li>
-          <li>Notion's "build via plain language" simplicity</li>
-          <li>ClickUp's problem-framing (position against broken automation)</li>
-          <li>Airtable's model-choice flexibility (enterprise trust)</li>
+          <li>Notion's "build via plain language" builder simplicity</li>
+          <li>ClickUp's problem-framing against brittle automation</li>
+          <li>Airtable's model-choice flexibility + Amazon Bedrock-equivalent data sovereignty</li>
         </ul>
       </div>
       <div>
         <div style="font-size:13px;font-weight:600;color:var(--monday-blue);margin-bottom:8px;">🚀 Own these spaces</div>
         <ul style="font-size:13.5px;color:var(--text);padding-left:16px;display:flex;flex-direction:column;gap:6px;line-height:1.6;">
-          <li>Cross-board / cross-function agent intelligence</li>
+          <li>Cross-board / cross-function agent intelligence (Work OS moat)</li>
           <li>Agent-as-Column (AI embedded in the work surface)</li>
-          <li>Agent Marketplace / partner ecosystem</li>
-          <li>ROI dashboards for AI agents</li>
-          <li>Human-in-the-loop as a collaborative workflow, not a safeguard</li>
+          <li>Public Agent Marketplace / partner ecosystem</li>
+          <li>ROI dashboards for AI agents (management layer)</li>
+          <li>Human-in-the-loop as collaborative design, not just safety guardrails</li>
+          <li>Combined Trust & Control leadership (governance + data privacy + audit)</li>
         </ul>
       </div>
     </div>
@@ -1289,7 +1318,7 @@
 </main>
 
 <div class="page-footer">
-  Built by Dex · monday.com AI Hackathon · Agent Builder Competitor Research · June 2026
+  Built by Dex · monday.com AI Hackathon · Agent Builder Competitor Research · June 2026 · Updated with live page data
 </div>
 
 </body>
