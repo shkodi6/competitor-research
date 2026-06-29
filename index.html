@@ -397,6 +397,43 @@
     font-style: italic;
   }
 
+  /* Real screenshots gallery */
+  .screenshots-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .screenshot-item {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .screenshot-item .screenshot-label {
+    padding: 8px 14px;
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    font-family: monospace;
+  }
+  .screenshot-item img {
+    width: 100%;
+    display: block;
+    max-height: 800px;
+    object-fit: cover;
+    object-position: top;
+    cursor: zoom-in;
+    transition: max-height 0.3s ease;
+  }
+  .screenshot-item img:hover {
+    max-height: none;
+  }
+  .screenshot-item img.expanded {
+    max-height: none;
+  }
+
   /* Feature tags row */
   .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
@@ -672,15 +709,19 @@
       <div class="subsection part1">
         <div class="subsection-title">Above the Fold — AI Teammates Page</div>
 
-        <div class="screenshot-placeholder" style="border-left: 4px solid #f06a6a;">
-          <div style="font-size:11px;color:var(--text-dim);text-align:left;margin-bottom:12px;">asana.com/product/ai/ai-teammates</div>
-          <div class="hero-headline">"Your team just got bigger"</div>
-          <div class="hero-sub">Pre-built AI agents that work alongside your team inside real workflows, with shared memory, governance, and context from the Work Graph, so they are ready to go on day one.</div>
-          <div class="hero-cta">
-            <div class="cta-btn cta-primary">Contact Sales</div>
-            <div class="cta-btn cta-secondary">Watch Demo</div>
+        <div class="screenshots-gallery">
+          <div class="screenshot-item">
+            <div class="screenshot-label">asana.com/product/ai/ai-teammates</div>
+            <img src="screenshots/asana-ai-teammates.png" alt="Asana AI Teammates page" loading="lazy" onclick="this.classList.toggle('expanded')" />
           </div>
-          <div class="screenshot-note">↑ Reconstructed from page content (browser screenshots unavailable in this run)</div>
+          <div class="screenshot-item">
+            <div class="screenshot-label">asana.com/product/ai/ai-studio</div>
+            <img src="screenshots/asana-ai-studio.png" alt="Asana AI Studio page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          </div>
+          <div class="screenshot-item">
+            <div class="screenshot-label">asana.com/product/ai</div>
+            <img src="screenshots/asana-ai.png" alt="Asana AI overview page" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          </div>
         </div>
 
         <div class="visual-desc">
@@ -811,14 +852,11 @@
 
       <div class="subsection part1">
         <div class="subsection-title">Above the Fold — Agents Page</div>
-        <div class="screenshot-placeholder" style="border-left: 4px solid #8b5cf6;">
-          <div style="font-size:11px;color:var(--text-dim);text-align:left;margin-bottom:12px;">notion.com/product/agents</div>
-          <div class="hero-headline">"Meet your 24/7 AI team"</div>
-          <div class="hero-sub">Q&A agents. Task routing agents. Status update agents. Create your own. Describe what you want in plain language, and Notion AI builds your agent for you.</div>
-          <div class="hero-cta">
-            <div class="cta-btn cta-primary" style="background:#8b5cf6;color:white;">Get started free</div>
+        <div class="screenshots-gallery">
+          <div class="screenshot-item">
+            <div class="screenshot-label">notion.com/product/agents</div>
+            <img src="screenshots/notion-agents.png" alt="Notion Agents page" loading="lazy" onclick="this.classList.toggle('expanded')" />
           </div>
-          <div class="screenshot-note">↑ Reconstructed from page content</div>
         </div>
 
         <div class="visual-desc">
@@ -952,14 +990,15 @@
 
       <div class="subsection part1">
         <div class="subsection-title">Above the Fold — Agent Builder Page</div>
-        <div class="screenshot-placeholder" style="border-left: 4px solid #7b68f0;">
-          <div style="font-size:11px;color:var(--text-dim);text-align:left;margin-bottom:12px;">clickup.com/solutions/ai-agent-builder</div>
-          <div class="hero-headline">"Create No-Code Super Agents<br>That Do Real Work"</div>
-          <div class="hero-sub">Design, customize, and deploy AI agents that understand your Workspace, execute multi-step workflows, and adapt over time.</div>
-          <div class="hero-cta">
-            <div class="cta-btn cta-primary">Free forever. No credit card.</div>
+        <div class="screenshots-gallery">
+          <div class="screenshot-item">
+            <div class="screenshot-label">clickup.com/solutions/ai-agent-builder</div>
+            <img src="screenshots/clickup-ai-agent-builder.png" alt="ClickUp AI Agent Builder page" loading="lazy" onclick="this.classList.toggle('expanded')" />
           </div>
-          <div class="screenshot-note">↑ Reconstructed from page content · Note: ClickUp help article returned 403 (gated)</div>
+          <div class="screenshot-item">
+            <div class="screenshot-label">clickup.com (homepage)</div>
+            <img src="screenshots/clickup-home.png" alt="ClickUp homepage" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          </div>
         </div>
 
         <div class="visual-desc">
@@ -1078,14 +1117,15 @@
 
       <div class="subsection part1">
         <div class="subsection-title">Above the Fold — AI Agents Page</div>
-        <div class="screenshot-placeholder" style="border-left: 4px solid #2d7be5;">
-          <div style="font-size:11px;color:var(--text-dim);text-align:left;margin-bottom:12px;">airtable.com/platform/ai-agents</div>
-          <div class="hero-headline">"Don't just ask AI.<br>Deploy it."</div>
-          <div class="hero-sub">Turn manual to magical with agents who understand your business, make informed decisions, and get work done at scale in a fraction of the time.</div>
-          <div class="hero-cta">
-            <div class="cta-btn cta-primary" style="background:#2d7be5;color:white;">Get started</div>
+        <div class="screenshots-gallery">
+          <div class="screenshot-item">
+            <div class="screenshot-label">airtable.com/platform/ai-agents</div>
+            <img src="screenshots/airtable-ai-agents.png" alt="Airtable AI Agents page" loading="lazy" onclick="this.classList.toggle('expanded')" />
           </div>
-          <div class="screenshot-note">↑ Reconstructed from page content</div>
+          <div class="screenshot-item">
+            <div class="screenshot-label">airtable.com (homepage)</div>
+            <img src="screenshots/airtable-home.png" alt="Airtable homepage" loading="lazy" onclick="this.classList.toggle('expanded')" />
+          </div>
         </div>
 
         <div class="visual-desc">
