@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Persona Insights — Agent Builder | monday.com AI Hackathon</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #262c3e;
+    --accent-blue: #4f8ef7;
+    --accent-purple: #9b59f7;
+    --accent-green: #2dce89;
+    --accent-orange: #f7a94f;
+    --accent-red: #f75f4f;
+    --text: #e8eaf0;
+    --text-muted: #8891a8;
+    --text-dim: #555d75;
+    --tag-bg: #1e2540;
+    --monday-blue: #0073ea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    background: linear-gradient(135deg, #0d1422 0%, #111827 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(155,89,247,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--accent-blue); }
+  .page-header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(155,89,247,0.12);
+    border: 1px solid rgba(155,89,247,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-purple);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .page-header .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 640px;
+  }
+  .page-header .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .meta-item span { color: var(--text-muted); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── Section ── */
+  .section {
+    margin-top: 56px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+    max-width: 680px;
+  }
+
+  /* ── Use Case Cards ── */
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .usecases-grid { grid-template-columns: 1fr; }
+  }
+  .usecase-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .usecase-card:hover { border-color: var(--accent-purple); }
+  .usecase-num {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .usecase-persona {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .usecase-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    padding-right: 40px;
+  }
+  .usecase-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .usecase-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .signal-tag {
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--accent-blue);
+    font-weight: 500;
+  }
+  .usecase-card.featured {
+    border-color: rgba(155,89,247,0.4);
+    background: linear-gradient(135deg, #151820 0%, #1a1630 100%);
+  }
+  .featured-badge {
+    display: inline-block;
+    background: rgba(155,89,247,0.15);
+    border: 1px solid rgba(155,89,247,0.3);
+    color: var(--accent-purple);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Insights ── */
+  .insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-purple);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+  }
+  .insight-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .insight-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .insight-card .insight-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+    margin-bottom: 6px;
+  }
+
+  /* ── Page structure recommendation ── */
+  .page-flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 20px;
+  }
+  .flow-step {
+    display: flex;
+    gap: 20px;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: -8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .flow-step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-purple);
+    flex-shrink: 0;
+  }
+  .flow-step-body {
+    padding: 8px 0 28px;
+  }
+  .flow-step-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .flow-step-body p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ── Gap box ── */
+  .gap-box {
+    background: rgba(245, 166, 35, 0.06);
+    border: 1px solid rgba(245, 166, 35, 0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 12px;
+  }
+  .gap-box .gap-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 8px;
+  }
+  .gap-box p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* ── Nav ── */
+  .top-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 13px;
+  }
+  .top-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .top-nav a:hover { color: var(--text); }
+  .top-nav a.active { color: var(--accent-purple); font-weight: 600; }
+  .top-nav .nav-sep { color: var(--border); }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <a href="index.html">Competitor Research</a>
+  <span class="nav-sep">›</span>
+  <a href="personas.html" class="active">Persona Insights</a>
+</nav>
+
+<!-- Header -->
+<div class="page-header">
+  <a href="index.html" class="nav-back">← Back to Competitor Research</a>
+  <div class="badge">🎯 Agent Builder · Hackathon</div>
+  <h1>Persona Insights</h1>
+  <p class="subtitle">Target personas for the Agent Builder page — use cases to showcase, strategic framing, and recommended page structure.</p>
+  <div class="meta">
+    <div class="meta-item">📅 <span>June 29, 2026</span></div>
+    <div class="meta-item">📋 <span>Sources: persona-brief-builder.vercel.app (IT, PMO, Marketing) + monday agents capabilities doc</span></div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── USE CASES ── -->
+  <div class="section">
+    <div class="section-label">Part 1</div>
+    <h2>Top Use Cases to Showcase</h2>
+    <p class="section-desc">These are the highest-impact agent stories for the target ICP — grounded in the persona briefs and monday agents capabilities.</p>
+
+    <div class="usecases-grid">
+
+      <!-- UC1 -->
+      <div class="usecase-card featured">
+        <div class="usecase-num">01</div>
+        <div class="featured-badge">⭐ Highest impact</div>
+        <div class="usecase-persona">IT Ops Manager → CIO</div>
+        <h3>IT Request Intake & Triage</h3>
+        <p>Every request from every channel — email, Slack, form — automatically classified, routed, and tracked. The agent handles intake 24/7. IT stops being a bottleneck.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">Event trigger</span>
+          <span class="signal-tag">Autonomous action</span>
+          <span class="signal-tag">Always-on</span>
+          <span class="signal-tag">Multi-channel</span>
+        </div>
+      </div>
+
+      <!-- UC2 -->
+      <div class="usecase-card featured">
+        <div class="usecase-num">02</div>
+        <div class="featured-badge">⭐ Exec-facing</div>
+        <div class="usecase-persona">Program Manager → PMO Director</div>
+        <h3>Weekly Risk & Status Report</h3>
+        <p>Every Monday, the agent scans all active projects, flags at-risk items, writes the leadership summary, and sends it. No chasing. No compiling. Already in their inbox.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">Scheduled trigger</span>
+          <span class="signal-tag">Cross-board context</span>
+          <span class="signal-tag">Deliverable output</span>
+        </div>
+      </div>
+
+      <!-- UC3 -->
+      <div class="usecase-card">
+        <div class="usecase-num">03</div>
+        <div class="usecase-persona">Head of RevOps</div>
+        <h3>Deal Risk Alert</h3>
+        <p>Every Friday, the agent scans the CRM board, flags stale deals, and posts to Slack. Zero-touch pipeline monitoring — reps don't have to do a thing.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">Scheduled trigger</span>
+          <span class="signal-tag">Proactive monitoring</span>
+          <span class="signal-tag">Slack output</span>
+        </div>
+      </div>
+
+      <!-- UC4 -->
+      <div class="usecase-card featured">
+        <div class="usecase-num">04</div>
+        <div class="featured-badge">⭐ Most relatable</div>
+        <div class="usecase-persona">Universal — any ICP</div>
+        <h3>Post-Meeting Action Items</h3>
+        <p>Call ends. Agent reads the Notetaker transcript. Creates tasks with owners and deadlines — before the meeting window closes. Works across every persona.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">External trigger</span>
+          <span class="signal-tag">Notetaker integration</span>
+          <span class="signal-tag">Instant output</span>
+        </div>
+      </div>
+
+      <!-- UC5 -->
+      <div class="usecase-card">
+        <div class="usecase-num">05</div>
+        <div class="usecase-persona">PMM / Marketing Director</div>
+        <h3>Competitive Intelligence Monitor</h3>
+        <p>Agent runs weekly, scans competitor activity via web search, updates battlecards, and pings the team when something material changes. Fully autonomous.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">Web search</span>
+          <span class="signal-tag">Scheduled trigger</span>
+          <span class="signal-tag">Proactive alert</span>
+          <span class="signal-tag">"Wow" moment</span>
+        </div>
+      </div>
+
+      <!-- UC6 -->
+      <div class="usecase-card">
+        <div class="usecase-num">06</div>
+        <div class="usecase-persona">IT Director / IAM Specialist</div>
+        <h3>Onboarding & Offboarding Access</h3>
+        <p>New hire triggers the agent. It coordinates approvals across HR, IT, and Finance, follows up on each step, and ensures access is provisioned — or revoked — completely.</p>
+        <div class="usecase-signals">
+          <span class="signal-tag">Event trigger</span>
+          <span class="signal-tag">Multi-step</span>
+          <span class="signal-tag">Cross-team coordination</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── STRATEGIC INSIGHTS ── -->
+  <div class="section">
+    <div class="section-label">Part 2</div>
+    <h2>Strategic Insights</h2>
+    <p class="section-desc">What the persona research tells us about how to position the agent builder page — framing, structure, and what to avoid.</p>
+
+    <div class="insights-list">
+
+      <div class="insight-card">
+        <div class="insight-label">Framing</div>
+        <h4>Don't lead with "build your own agent"</h4>
+        <p>For CIO, COO, VP of Ops — that sounds like a developer tool. They don't want to build; they want outcomes. Lead with a specific agent that solves a specific problem. Show the builder as customization, not construction. "Build" is the last step, not the headline.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-label">Real pain</div>
+        <h4>The ICP's #1 pain is operational overhead — not "needing AI"</h4>
+        <p>Every persona (IT, PMO, Marketing) describes the same underlying problem differently: too much coordination work, not enough time for strategy. The page should speak to that directly — not AI features, not technology. The agent is a solution to a workflow problem they already feel.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-label">Competitive positioning</div>
+        <h4>Competitors frame agents as assistants. monday.com's differentiator is agents that work on your behalf.</h4>
+        <p>Asana, Notion, ClickUp all position AI as something that helps <em>you</em> work faster — co-pilot framing. monday's differentiator is agents that do the work autonomously: on a schedule, triggered by events, even when you're not there. That's a fundamentally different promise. It should be front and center.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-label">Gap</div>
+        <h4>RevOps is underserved in the persona briefs — but it's in the target ICP</h4>
+        <p>None of the three persona briefs (IT, PMO, Marketing) covers RevOps or Sales Ops — but Head of RevOps and Operations Manager are on the hackathon ICP list. Deal tracking, pipeline risk, forecast reporting are perfect agent builder territory and highly tangible. Worth addressing on the page.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-label">Trust & Control</div>
+        <h4>Decision-makers need to see governance before they'll say yes</h4>
+        <p>CIOs, CTOs, and IT Directors are gatekeepers — they evaluate tools for the org, not just for themselves. Trust and control signals (per-board permissions, human-in-the-loop, audit log, admin governance, cost center) aren't nice-to-haves on this page — they're table stakes for this audience. If they don't see them, the page won't convert.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── PAGE STRUCTURE ── -->
+  <div class="section">
+    <div class="section-label">Part 3</div>
+    <h2>Recommended Page Structure</h2>
+    <p class="section-desc">A page flow that follows the persona logic — from pain to proof to permission.</p>
+
+    <div class="page-flow">
+      <div class="flow-steps">
+
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-body">
+            <h4>Open with the pain</h4>
+            <p>Your team is drowning in coordination. Every channel, every update, every status report — all manual. This is what the decision-maker feels every day. Name it before you pitch anything.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-body">
+            <h4>Show 3–4 concrete agents</h4>
+            <p>Each with: who it's for + what triggers it + what it does. Short. Specific. Real. Not feature lists — before/after moments. Lead with the most relatable (post-meeting tasks or weekly report).</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-body">
+            <h4>Reveal: pre-built and customizable in minutes</h4>
+            <p>"These are ready to go. Modify them for your workflow in minutes — or build from scratch." This is where the builder enters. Not as the lead, but as the unlock.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-num">4</div>
+          <div class="flow-step-body">
+            <h4>Address trust & control</h4>
+            <p>Per-board permissions. Human-in-the-loop. Audit log. Admin governance. Cost center. This is where the CIO/CTO moves from interested to approved. Don't bury it — it earns the deal.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-num">5</div>
+          <div class="flow-step-body">
+            <h4>Close with the promise</h4>
+            <p>"Your team leads. Agents handle the rest." Short, clear, human. Ends on empowerment, not technology.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="gap-box" style="margin-top: 24px;">
+      <div class="gap-label">⚠️ Note on naming</div>
+      <p>"Agent Builder" as a product name may create friction with this ICP — it implies they need to build something. Consider whether the page leads with the outcome (what the agent does) and introduces the builder as a capability, not the feature name.</p>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>
